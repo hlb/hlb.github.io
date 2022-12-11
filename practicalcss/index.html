@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+    <title>CSS實務排版技巧、秘訣與技術</title>
+	<link rel="stylesheet" href="nucss3.css">
+	<link rel="stylesheet" href="pclt.css">
+    <style>
+        body {
+            line-height: 1.8;
+            font-size: 100%;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="content">
+<h1>CSS實務排版技巧、秘訣與技術</h1>
+
+<p class="vs0">自從<a href="http://www.webstandards.org/">網頁標準計劃</a> (The Web Standards Project) 提出<a href="http://www.webstandards.org/upgrade/">瀏覽器升級方案</a> (Browser Upgrade Initiative) 後，無數的網站設計師開始採用較為符合標準的網站設計方式：他們用 CSS 來設計版面，以取代傳統使用的表格。</p>
+
+<h2>"表格已死......"</h2>
+
+<p>有些設計師在 Jeffrey Zeldman 的<a href="http://www.alistapart.com/stories/journey/">指導</a>下，用撰寫教學文件的方式幫助我們解決第一道難題 – 不使用表格，網頁會缺乏設計感。起初他們的重心放在撰寫幾篇以 CSS 的定位能力取代表格的專欄：如此一來，網站設計師就能把網頁的架構與內容完整地分離。在 Eric Costello 的 <a href="http://www.glish.com/css/">glish</a> 網站及 Rob Chandanais 的 <a href="http://www.bluerobot.com/web/layouts/">Blue Robot</a> 網站都有許多相關的技術文件。</p>
+
+<p>許多人也一起參與，包括製作 <a href="http://www.thenoodleincident.com/tutorials/box_lesson/index.html">Box lesson</a> 的 Owen Briggs，以及撰寫相關討論的 <a href="http://www.glish.com/css/hacks.asp">Eric Costello</a> 與 <a href="http://www.tantek.com/CSS/Examples/boxmodelhack.html">Tantek Çelik</a>。<a href="http://dotfile.net/ala_list.php">Dotfile</a>、Web Nouveau (譯註：已經無法連結) 列舉了數百個利用 CSS 設計版面的網站。</p>
+
+<h2>"......表格長存"</h2>
+
+<p>當大家可以利用這些資源，只靠著 CSS 的定位能力來設計一般性版面時，我們這些設計師卻發現有某些實作上的問題，可以用表格輕易解決，而使用 CSS 時則會遇到一些麻煩。像這樣的問題都會以 "Tables are dead ... long live tables." 這個標題發表在 <a href="http://www.webdesign-l.com/" title="An excellent web design list with a high signal to noise ratio...">Webdesign-L</a> 網站上。</p>
+
+<h3>問題</h3>
+
+<p>假設你要將一堆縮圖連結到較大尺寸的版本 – 這種網頁相當常見。除此之外，你希望每張縮圖的正下方都有個簡短的標題。接著，為了有效利用瀏覽器視窗的空間，你希望讓縮圖跟標題成對地排成一列，並會隨瀏覽器視窗寬度自動分行 (wrap，即流動式設計)。隨著最後一個要求，我們放棄表格，進入了 CSS 的王國。</p>
+
+<h3>一步步來</h3>
+
+<p>讓我們一步步來。第一個要求是縮圖的正下方要有個標題。作法相當直接了當：在你的
+HTML 裡放上圖片，接著一個斷行 (BR)，再把標題放在一個段落 (P) 裡並且置中 (利用
+CSS)。</p>
+
+<p>接著我們要讓這些縮圖跟標題成對地排列在瀏覽器視窗裡。使用表格排版時，這一對對的縮圖跟標題會被分別放置在 TD 裡。在使用 CSS 排版時，我們要把它們分別放置在 DIV 裡。為了讓它們能水平排列在視窗上，我們用 CSS 讓這些 DIV 往左浮動 (FLOAT)。</p>
+
+<p>這時候 CSS 看起來應該像這樣：</p>
+
+<pre>div.float {
+  float: left;
+  }
+  
+div.float p {
+   text-align: center;
+   }
+</pre>
+
+<p>而 HTML：</p>
+
+<pre>&lt;div class="float"&gt;
+  &lt;img src="image1.gif" width="100" height="100"
+  alt="圖 1" /&gt;&lt;br /&gt;
+  &lt;p&gt;標題 1&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="float"&gt;
+  &lt;img src="image2.gif" width="100" height="100"
+  alt="圖 2" /&gt;&lt;br /&gt;
+  &lt;p&gt;標題 2&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="float"&gt;
+  &lt;img src="image3.gif" width="100" height="100"
+  alt="圖 3" /&gt;&lt;br /&gt;
+  &lt;p&gt;標題 3&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+
+<p>而在瀏覽器裡應該會看到：</p>
+
+<div class="float">
+  <img src="image1.gif" width="100" height="100" alt="圖 1"><br>
+  <p>標題 1</p>
+</div>
+
+<div class="float">
+  <img src="image2.gif" width="100" height="100" alt="圖 2"><br>
+  <p>標題 2</p>
+</div>
+
+<div class="float">
+  <img src="image3.gif" width="100" height="100" alt="圖 3"><br>
+  <p>標題 3</p>
+</div>
+
+<div class="spacer">&nbsp;</div>
+
+<p>下一個要求得靠 CSS 解決。我們要讓圖片跟標題成對地自動換行，以配合瀏覽視窗的寬度。讓 DIV 往左浮動 (FLOAT) 已經解決了這個問題。只要我們多放幾張縮圖，它們就會在瀏覽視窗裡自動換行 (只要改變瀏覽視窗的寬度，你就可以看到流動式設計的作用)：</p>
+
+<div class="float">
+  <img src="image1.gif" width="100" height="100" alt="圖 1"><br>
+  <p>標題 1</p>
+</div>
+
+<div class="float">
+  <img src="image2.gif" width="100" height="100" alt="圖 2"><br>
+  <p>標題 2</p>
+</div>
+
+<div class="float">
+  <img src="image3.gif" width="100" height="100" alt="圖 3"><br>
+  <p>標題 3</p>
+</div>
+
+<div class="float">
+  <img src="image1.gif" width="100" height="100" alt="圖 1"><br>
+  <p>標題 1</p>
+</div>
+
+<div class="float">
+  <img src="image2.gif" width="100" height="100" alt="圖 2"><br>
+  <p>標題 2</p>
+</div>
+
+<div class="float">
+  <img src="image3.gif" width="100" height="100" alt="圖 3"><br>
+  <p>標題 3</p>
+</div>
+
+<br style="clear: both;">
+
+<p>現在假設你希望同時在網頁上顯示好幾類的縮圖，並利用背景顏色或邊界等外觀條件幫它們分組。這時候只要用一個容器 (container) DIV 把它們包在一起就好：</p>
+
+<pre>div.container {
+  border: 2px dashed #333;
+  background-color: #ffe;
+  }
+</pre>
+
+<p>但這時候麻煩來了。當你在 CSS 裡將一個元件浮動 (FLOAT) 以後，它就不再佔據任何 "空間"，因此背景及邊界都會在圖片的正下方出現，而不是繞著圖片。所以我們必須在容器 DIV 裡多放點東西，比方說一個間隔 (spacer) DIV：</p>
+
+<pre>div.spacer {
+  clear: both;
+  }
+</pre>
+
+<p>其次是 HTML (注意在容器 DIV 的上下方都有個間隔 DIV):</p>
+
+<pre>&lt;div class="container"&gt;
+&lt;div class="spacer"&gt;
+  &amp;nbsp;
+&lt;/div&gt;
+
+&lt;div class="float"&gt;
+  &lt;img src="image1.gif" width="100" height="100"
+  alt="圖 1" /&gt;&lt;br /&gt;
+  &lt;p&gt;標題 1&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="float"&gt;
+  &lt;img src="image2.gif" width="100" height="100"
+  alt="圖 2" /&gt;&lt;br /&gt;
+  &lt;p&gt;標題 2&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="float"&gt;
+  &lt;img src="image3.gif" width="100" height="100"
+  alt="圖 3" /&gt;&lt;br /&gt;
+  &lt;p&gt;標題 3&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="spacer"&gt;
+  &amp;nbsp;
+&lt;/div&gt;
+
+&lt;/div&gt;
+</pre>
+
+<p>結果如下：</p>
+
+<div class="container">
+<div class="spacer">
+&nbsp;
+</div>
+
+<div class="float">
+  <img src="image1.gif" width="100" height="100" alt="圖 1"><br>
+  <p>標題 1</p>
+</div>
+
+<div class="float">
+  <img src="image2.gif" width="100" height="100" alt="圖 2"><br>
+  <p>標題 2</p>
+</div>
+
+<div class="float">
+  <img src="image3.gif" width="100" height="100" alt="圖 3"><br>
+  <p>標題 3</p>
+</div>
+
+<div class="spacer">
+&nbsp;
+</div>
+
+</div>
+<p class="credit">根據 <a href="http://www.leafdigital.com/">sam marshall</a> 的原始碼製作。</p>
+
+<h3>巢狀 DIV 與巢狀 TABLE 有什麼不一樣？</h3>
+
+<p>好吧，我們有了一堆的巢狀 (nested) DIV，這比巢狀表格好在哪裡？答案是在於這些標籤的設計觀點上。DIV 暗示著一種邏輯或結構上的分組，即使它們以巢狀表示，仍然具有標記的結構性。在我們的例子裡，我們把縮圖跟它們的標題分成一組 (第一層)，再將這些成對的縮圖跟標題依照相似性分組 (第二層)。這些都是利用 DIV 標籤把結構上的分組處理得相當好的範例。</p>
+
+<p>然而表格暗示的是一種行與列的標頭 (header) 跟每個欄位資料的關係。當我們利用表格設計版面時，我們就喪失了表格結構的意義。讓我們回過頭來用 HTML 設計版面，巢狀表格只會讓問題複雜化。</p>
+
+<h3>表單功能</h3>
+
+<p>另一個常見的表格排版應用是排列表單 (FORM) 裡的元件與描述。關於這是不是表格的合適應用尚有很多爭論，而就像我們即將看到的，CSS 技術對類似的排版需求也很有用。</p>
+
+<p>一個典型的表單版面裡，在左方的是描述，緊靠著右邊界，在右方的是元件，緊靠著左邊界。一切事物都在中央交會：</p>
+
+<div style="width: 350px; background-color: #cc9; border: 1px dotted #333; padding: 5px; margin: 0px auto;">
+<form action="">
+<div class="row"><span class="label">姓名:</span><span class="formw"><input type="text" size="25"></span></div>
+
+<div class="row"><span class="label">年齡:</span><span class="formw"><input type="text" size="25"></span></div>
+
+<div class="row"><span class="label">鞋子尺寸:</span><span class="formw"><input type="text" size="25"></span></div>
+
+<div class="row"><span class="label">附註:</span><span class="formw"><textarea cols="25" rows="8">快! 來寫點東西......</textarea></span></div>
+<div class="spacer">&nbsp;</div>
+</form>
+</div>
+<p class="credit">根據 <a href="http://www.meyerweb.com/">Eric Meyer</a> 的原始碼設計概念製作。</p>
+
+<p>上面這個表單沒有使用到表格。我們又再度使用到浮動 (FLOAT) 來達成定位的工作。戲法是這樣的：我們用一個 DIV 模仿表格的列。然後我們創造兩個 SPAN，一個給描述、另一個給元件。把描述的 SPAN 往左浮動，元件的 SPAN 往右浮動。讓描述 SPAN 裡的文字往右靠，讓元件 SPAN 裡的文字往左靠。</p>
+
+<p>所以 CSS 應該長這樣：</p>
+
+<pre>div.row {
+  clear: both;
+  padding-top: 10px;
+  }
+
+div.row span.label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  }
+
+div.row span.formw {
+  float: right;
+  width: 235px;
+  text-align: left;
+  } </pre>
+
+<p>上面的 CSS 也設了 SPAN 的寬度。寬度可以像是範例裡的絕對值，或者也可以用百分比表示。百分比最多是到 100% 或少一點點，依照你設的留白跟邊界而定 (還有你設計的容器)。在範例裡我用另一個 DIV 把表單包起來，以設定邊界與背景。</p>
+
+<p>範例 HTML：</p>
+
+<pre>&lt;div style="width: 350px; background-color: #cc9;
+border: 1px dotted #333; padding: 5px;
+margin: 0px auto";&gt;
+  &lt;form&gt;
+    &lt;div class="row"&gt;
+      &lt;span class="label"&gt;姓名:&lt;/span&gt;&lt;span
+class="formw"&gt;&lt;input type="text" size="25" /&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+      &lt;span class="label"&gt;年齡:&lt;/span&gt;&lt;span
+class="formw"&gt;&lt;input type="text" size="25" /&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+      &lt;span class="label"&gt;鞋子尺寸:&lt;/span&gt;&lt;span
+class="formw"&gt;&lt;input type="text" size="25" /&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+      &lt;span class="label"&gt;附註:&lt;/span&gt;&lt;span
+class="formw"&gt;
+        &lt;textarea cols="25" rows="8"&gt;
+        快! 來寫點東西......
+        &lt;/textarea&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+  &lt;div class="spacer"&gt;
+  &amp;nbsp;
+  &lt;/div&gt;
+ &lt;/form&gt;
+
+&lt;/div&gt;
+
+</pre>
+
+<h4>追求卓越</h4>
+
+<p>你也許會注意到，上面容器 DIV 的 STYLE 裡有一個屬性：<code>margin: 0px auto;</code>。在符合標準的瀏覽器裡，它會讓 DIV 往中間對齊。一些瀏覽器 (如 Windows 底下的 IE5.x) 會忽略這一點，卻會錯誤地讓有 <code>text-align: center</code> 的 DIV 往中間對齊。想讓 DIV 在這些瀏覽器往中間對齊的話，你可以用有 <code>text-align: center</code> 的 DIV 把另一個有 <code>margin: 0px auto;</code> 的 DIV 包起來 (裡面的 TEXT-ALIGN 是 left，所以文字會正常排列)。詳見 Rob Chandanais 在 Layout Reservoir 網站撰寫的置中對齊技術(<a href="http://bluerobot.com/web/css/center1.html" title="CSS Centering: Auto-width Margins">1</a>, <a href="http://bluerobot.com/web/css/center2.html" title="Centering: Negative Margin">2</a>)。</p>
+
+<h3>分隔差異</h3>
+
+<p>在處理本質上相對的事物時，也常會用到與前面類似的表格排版設計。這次你不是讓它們在中央交會，而是讓兩個元件擺在瀏覽器視窗的兩側。這也許是一個你想讓商標放在頁面右上角，而讓導覽元件放在頁面左上角的案例：</p>
+
+<div style="width: 90%; background-color: #666; border: 1px solid #333; padding: 2px; margin: 0 auto;">
+<div class="spacer"></div>
+
+<div class="row"><span class="left">首頁&nbsp;&gt;&nbsp;產品</span><span class="right">[商標]</span></div>
+
+<div class="spacer"></div>
+
+</div>
+
+
+<p>在這裡我們使用跟表單範例裡一樣的 DIV.ROW，但這次會使用不同的 SPAN。左邊的 SPAN 往左浮動，而且文字往左靠。右邊的 SPAN 往右浮動，而且文字往右靠。</p>
+
+<p>CSS：</p>
+
+<pre>div.row span.left {
+  float: left;
+  text-align: left;
+  font-weight: bold;
+  color: #fff;
+  width: 49%;
+  }
+
+div.row span.right {
+  float: right;
+  text-align: right;
+  font-weight: bold;
+  color: #fff;
+  width: 49%;
+  }
+</pre>
+
+<p>HTML：</p>
+
+<pre>&lt;div style= "width: 90%; background-color: #666;
+border: 1px solid #333; padding: 0px; margin: 0px auto;"&gt;
+&lt;div class="spacer"&gt;&lt;/div&gt;
+
+&lt;div class="row"&gt;&lt;span class="left"&gt;
+首頁&nbsp;&gt;&nbsp;產品&lt;/span&gt;
+&lt;span class="right"&gt;
+[商標]&lt;/span&gt;&lt;/div&gt;
+
+&lt;div class="spacer"&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+</pre>
+
+<h2>CSS 求助</h2>
+
+<p>ACRONYM 與 ABBR 標籤雖然只在少數情況派上用場，卻有不錯的實用價值，可以配合著 TITLE 屬性來解釋頭字語或縮寫。但即使網頁有提供文字來協助網站參觀者瞭解縮寫或頭字語的意義，<span class="help" title="Mac 的 iCab 跟 Mozilla 是例外......">現在大部分的瀏覽器</span>不會為這個標籤作出任何的警示。所以讓我們從 CSS 來著手。</p>
+
+<p>你可以在樣式表裡為這些標籤加上底線，讓它們能引起注意。透過瀏覽器的支援，你也可以用 CSS 把游標換成 "求助" 符號 (通常用問號表示)。當然你也可以不用被 HTML 標籤限制。創造一個叫 .help 的類別，再用 SPAN 來為那些容易讓讀者混淆的字詞添加資訊。</p>
+
+<p><acronym title="Cascading Style Sheets">CSS</acronym> 範例：</p>
+
+<pre>abbr, acronym, .help {
+  border-bottom: 1px dotted #333;
+  cursor: help;
+  }
+</pre>
+
+<p>這個 CSS 配合<abbr title="Abbreviation">縮寫</abbr>或頭字語標籤的 <span class="help" title="大部分的瀏覽器會用訊息來顯示 TITLE 屬性裡的文字">TITLE 屬性</span>使用，可以產生跟超連結不一樣的底線效果。把游標改成 "求助" 暗示著這些文字是不能按的，而 TITLE 屬性則會解釋縮寫或頭字語。我最早是在 Sander Tekelenburg 的<a href="http://www.euronet.nl/%7Etekelenb/" title="Sander's home page">網站</a>上看到這種做法。</p>
+
+<h2>請三思而後行......</h2>
+
+<p>我最先是在 Bos 跟 Lie 的 <cite><a href="http://www.awlonline.com/cseng/titles/0-201-41998-X/liebos/">Cascading Style Sheets</a></cite> 讀到關於將串列 (LIST) 改成行內 (inline) 顯示的文章。後來我在 Christopher Schmitt 的 <a href="http://www.babblelist.com/">BabbleList</a> 網站率先看到了這個技巧的實際應用。這個戲法讓串列水平地顯示在一行裡；也就是說從：</p>
+
+<ul>
+<li>項目一</li>
+
+<li>項目二</li>
+
+<li>項目三</li>
+</ul>
+
+<p>轉換成：</p>
+
+<ul>
+<li style="display: inline;">項目一</li>
+
+<li style="display: inline;">項目二</li>
+
+<li style="display: inline;">項目三</li>
+</ul>
+
+<p>如果加上些留白跟邊界的效果：</p>
+
+<ul>
+<li class="inline">項目一</li>
+
+<li class="inline">項目二</li>
+
+<li class="last">項目三</li>
+</ul>
+
+<p>CSS：</p>
+
+<pre>li.inline {
+  display: inline;
+  padding-left: 3px;
+  padding-right: 7px;
+  border-right: 1px dotted #066;
+  }
+
+li.last {
+  display: inline;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-right: 0px;
+  } </pre>
+
+<p>HTML：</p>
+
+<pre>&lt;ul&gt;
+&lt;li class="inline"&gt;項目一&lt;/li&gt;
+
+&lt;li class="inline"&gt;項目二&lt;/li&gt;
+
+&lt;li class="last"&gt;項目三&lt;/li&gt;
+&lt;/ul&gt; </pre>
+
+
+<h3>結束了？或只是剛剛開始......</h3>
+
+<p>我希望藉由分享這些技巧、戲法與技術，刺激你在網站上使用更多 CSS 排版技巧，並且繼續獲得及分享新的技巧、戲法與技術。</p>
+<p style="text-align: right">—Mark Newhouse</p>
+
+<h3>作者</h3>
+<p><a href="http://gnuhaus.com/iblog/">Mark Newhouse</a>是<a href="http://www.noao.edu/" title="The Nation’s Window to the
+Universe...">國家天文台</a>的網站設計師，他正慢慢地把網站改成 CSS
+為基礎的設計。</p>
+
+<h3>翻譯</h3>
+<p><a href="http://iamhlb.com/">hlb</a>, 2003.</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,298 @@
+
+
+
+
+
+/*
+     FILE ARCHIVED ON 14:07:57 Feb 10, 2003 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:22:44 Mar 17, 2012.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+
+/* 6th css revision 1 Nov. 2001 */
+
+body	{
+	margin:	0;
+	padding:	0;
+	color:	black;
+	background-color:	#cc0;
+	font:	small/1.5em palatino, georgia, serif;
+	}
+h1	{
+	font-size:	2em;
+	}
+h2	{
+	font-size:	1.75em;
+	}
+h3	{
+	font-size:	1.5em;
+	}
+h4, h5	{
+	font-size:	1.25em;
+	}
+	
+h1, h2, h3, h4, h5, h6	{
+	margin:	1.25em 0 0 0;
+	font-family: arial, helvetica, helve, sans-serif;
+	}
+p	{	/* primitive version for css-1 agents */
+	margin:	.5em 0;
+	font-family: palatino, georgia, serif;
+	font-size:    x-small;      
+             /* false value for WinIE4/5 */
+    voice-family: "\"}\"";   
+             /* trick WinIE4/5 into thinking the rule is over */
+    voice-family: inherit;   
+             /* recover from trick */
+    font-size:    small         
+             /* intended value for better browsers */
+    }
+html>p	{
+    font-size:    small;
+	font-family: palatino, georgia, serif;
+             /* be nice to Opera */
+	}
+#content p+p	{	/* sophisticated alternative for css-2 agents */
+	margin-top:	-.5em;
+	text-indent:	2em;
+	}
+body .stb	{
+	margin-top:	3em
+	}
+body .mtb	{
+	margin-top:	5em
+	}
+body .ltb	{
+	margin-top:	10em
+	}
+body .stb, body .mtb, body .ltb	{
+	text-indent:	0
+	}
+h1+h2, h2+h3, h3+h4, h5+h6	{
+	margin:	.5em 0;
+	}
+a	{
+	text-decoration:	none;
+	font-weight:	bold;
+	}
+a:link	{
+	color:	#f30;
+	background-color: transparent;
+	}
+a:visited	{
+	color:	#c30;
+	background-color: transparent;
+	}
+a:active	{
+	color:	#cc0;
+	background-color: transparent;
+	}
+a:hover	{
+	color:	#f60;
+	background-color: transparent;
+	text-decoration:	underline;
+	}
+.ahem	{
+	display:	none;
+	}
+#wrapper	{
+	float:	left;
+	width:	67%;
+	border-right:	2px dotted black;
+	border-bottom:	2px dotted black;
+	color: #000;
+	background-color:	#ffc;
+	margin:	0 15px 0 0;
+	}
+#content	{	/* shorthand box properties tip: think of a clock: 12, 3, 6, 9 */
+	padding:	0 10% 100px 15%;
+	}
+#menu	{
+	padding:	10px 10px 0px 15px;
+	font:	10px/14px geneva, arial, helvetica, sans-serif;
+	color:	black;
+	background-color:	#cc0;
+	}
+.orangebox	{
+	padding:	4px;
+	margin:	2px;
+	color: #000;
+	background-color:	#f93;
+	border:	solid black 2px;
+	}
+.offwhitebox	{
+	padding:	6px;
+	margin:	2px;
+	color: #000;
+	background-color:	#ffc;
+	border:	dotted black 2px;
+	}
+.offgreenbox	{
+	padding:	6px;
+	margin:	5px;
+	color: #000;
+	background-color:	#cc6;
+	border:	dotted black 1px;
+	}
+.greenmile	{
+	padding:	6px;
+	margin-left: 0;
+	margin-top: 50px;
+	color: #000;
+	background-color:	#cc6;
+	border:	dotted black 1px;
+	}	
+	
+code, tt, pre	{
+	font:	11px monaco, "andale mono", courier, "courier new";
+	color:	#630;
+	background-color: transparent;
+	}
+	
+/* DL is used exclusively for the "related stories" column. */
+	
+dl {
+	font: normal 12px/18px Georgia, Palatino, serif; 
+	}
+dt {
+	font: bold 12px/18px Georgia, Palatino, serif; 
+	}
+dd {
+	font: normal 12px/18px Georgia, Palatino, serif; text-indent: 0; margin-top: .5em;
+	}			
+.pullquote	{
+	font:	13px/1.5em palatino, georgia, serif;
+	margin: 10px 0 10px 5px;
+	}
+blockquote.special	{
+	color:	#630;
+	background-color: transparent;
+	font-family:	monaco, "andale mono", courier, "courier new", monospace;
+	margin-left:	0;
+	}
+.superfine	{
+	font:	10px/14px geneva, arial, helvetica, sans-serif;
+	}
+.quoteme	{
+	font:	12px/18px verdana, helvetica, arial, sans-serif;
+	margin-top:	50px;
+	}
+.typebutt {
+   font: 11px verdana, arial, sans-serif;  
+   color : #000; 
+   background-color : #cc6; 
+   margin: 0;
+   padding: 0 2px 0 2px;
+}
+.typebutt2 {
+   font: 11px verdana, arial, sans-serif; 
+   color : #000; 
+   background-color : #cc6; 
+   margin: 0;
+   padding: 0 2px 0 2px;
+}
+.butt {
+   font-size : 12px; 
+   font-family : geneva, arial, sans-serif; 
+   color : #ffc; 
+   background-color : #c30; 
+   margin-top : 25px; 
+}
+img	{
+	border:	0
+	}
+.vs6	{
+	margin:	6px 0
+	}
+.vs10	{
+	margin:	10px 0
+	}
+.fourhundred	{
+	margin-top:	400px;
+	}
+.fivehundred	{
+	margin-top:	500px;
+	}
+.fifty	{
+	margin-top:	50px;
+	}
+.fiftybot 	{
+	margin-bottom:	50px;
+	}
+.vs0	{
+	margin-top:	0;
+	padding-top: 0;
+	}	
+
+#menu a:link	{
+	color: #c30;
+	background: transparent;
+	text-decoration: none;
+	font-weight: bold;
+	}
+
+#menu a:visited	{
+	color: #c30;
+	background: transparent;
+	text-decoration: none;
+	font-weight: bold;
+	}
+
+#menu a:hover	{
+	color: #ffc;
+	text-decoration: underline;
+	background: transparent;
+	font-weight: bold;
+	}
+
+#menu a:active	{
+	color: #ffe;
+	text-decoration: underline overline;
+	background: transparent;
+	font-weight: bold;
+	}
+
+#menu h5	{
+	color: #000;
+	background: transparent;
+	}
+
+.fakebox {
+  float : left;
+  color : #000;
+  background : #ffb;
+  font : 10px verdana, arial, sans-serif;
+  padding : 3px;
+  margin : 10px 5px 0 0;
+  border : 1px dotted #f60;
+  width : 150px;
+  text-align : center;
+}
+.drakebox {
+  color : #000;
+  background : #ffb;
+  font : 10px verdana, arial, sans-serif;
+  padding : 3px;
+  margin : 10px 0 0;
+  border : 1px dotted #f60;
+  width : 150px;
+  text-align : center;
+}
+.cakebox {
+  color: #930;
+  background: #ffc;
+  font: 11px/1.5 verdana, sans-serif;
+  padding : 5px 3px 5px 10px;
+  margin : 25px 0;
+  border: 1px dotted #c60;
+  text-align: left;
+}	
+
+.uc	{
+	text-transform: uppercase;
+	}
+
+
